@@ -1,8 +1,50 @@
 import random
 
-harcos = 100
+harcos = 50
 szorny = random.randint(200, 350)
 print(f"A szörny életereje {szorny}")
+
+
+armory = []
+while len(armory) != 3:
+    while True:
+        fegyver = input("Milyen fegyvert szeretnél? (Sword, Halberd, Mace, Bow) Nyomj entert hogy információkat kapj a fegyverekről ")
+        if fegyver == "":
+            print("------------------------\nSword: Minden dobáshoz hozzáad 3-t\nHalberd: Nagyobb esélye van kisebbett dobni, de minden dobáshoz hozzáad 5-t\nMace: A szörny 3 dobásából elvesz 1-et, de minden dobásból levon 2-t\nBow: Nagyobb esélye van nagyobbat dobni, de minden dobásból levon 3-t")
+        else:
+            armory.append(fegyver)
+            break
+    while True:
+        armor = input("Milyen armort szeretnél? (Light, Medium, Heavy) Nyomj entert hogy információkat kapj az armorokról ")
+        if armor == "":
+            print("------------------------\nLight: +15 életerőt ad és dobsz +1 10 oldalú kockával a sebzéshez amikor te jössz\nMedium: +30 életerőt ad és dobsz +1 5 oldalú kockával a sebzéshez amikor te jössz\nHeavy: +50 életerőt ad")
+        else:
+            armory.append(armor)
+            break
+    while True:
+        glove = input("Milyen kesztyűt szeretnél? (Lucky, Cheating, Stronghand, Steady hand) Nyomj entert hogy információkat kapj a kesztyűkről ")
+        if glove == "":
+            print("------------------------\nLucky Gloves: Minden dobáshoz hozzáad 1-et\nCheating Gloves: Hozzáad +1 20 oldalú kockát a sebzéshez\nStronghand Gloves: Minden kockád 24 oldalú lesz de levon 3-t minden dobásból\nSteady hand Gloves: Nem lehet vele egyest dobni")
+        else:
+            armory.append(glove)
+            break
+ 
+print(f"Felszerelésed: {armory[0]}, {armory[1]} armor, {armory[2]} gloves")
+  
+def halberd():                                    #ezt minden kockához hozzá kell adni
+    if random.random() <= 0.5:
+        return random.randint(1,5)
+    elif random.random() <= 0.3:
+        return random.randint(6,12)
+    else:
+        return random.randint(13,20)
+
+def bow():                                        #ezt minden kockához hozzá kell adni
+    if random.random() <= 0.7:
+        return random.randint(11,20)
+    else:
+        return random.randint(1,10)
+
 
 
 harcos_dobasok_osszege = 0
